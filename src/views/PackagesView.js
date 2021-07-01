@@ -5,4 +5,3 @@ const PackagesView = () => {
 };
 
 export default PackagesView;
-Packages;
