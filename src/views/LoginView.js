@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { GlobalContext } from '../context/GlobalState';
 import axios from 'axios';
 
 const LoginView = ({ URL, history }) => {
+	const { checkForToken } = useContext(GlobalContext);
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -16,10 +18,9 @@ const LoginView = ({ URL, history }) => {
 				},
 			}
 		);
-		console.log(response);
 		if (response.data.token) {
 			localStorage.setItem('token', response.data.token);
-			//context function
+			checkForToken();
 			history.push('/packages');
 		} else {
 			setMessage(response.data.message);
@@ -28,7 +29,6 @@ const LoginView = ({ URL, history }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('login');
 		loginUser(email, password);
 	};
 
