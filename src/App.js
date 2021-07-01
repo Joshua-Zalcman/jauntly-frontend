@@ -1,13 +1,16 @@
 import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
+import { GlobalProvider } from './context/GlobalState';
 
 function App() {
 	return (
-		<div className="App">
-			<Header />
-			<Main />
-		</div>
+		<GlobalProvider>
+			<div className="App">
+				<Header />
+				<Main />
+			</div>
+		</GlobalProvider>
 	);
 }
 
