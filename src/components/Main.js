@@ -6,6 +6,7 @@ import PackageView from '../views/PackageView';
 import HomeView from '../views/HomeView';
 import LoginView from '../views/LoginView';
 import UsersView from '../views/UsersView';
+import RegisterUserView from '../views/RegisterUserView';
 import { GlobalContext } from '../context/GlobalState';
 
 const Main = () => {
@@ -57,10 +58,13 @@ const Main = () => {
 						return <Redirect to="/users/login" />;
 					}}
 				/>
-
 				<Route
 					path="/users/login"
 					render={(rp) => <LoginView {...rp} URL={URL} />}
+				/>
+				<Route
+					path="/users/register"
+					render={(rp) => <RegisterUserView {...rp} URL={URL} />}
 				/>
 			</Switch>
 		</main>
