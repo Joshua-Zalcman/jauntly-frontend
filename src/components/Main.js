@@ -7,13 +7,13 @@ import HomeView from '../views/HomeView';
 
 const Main = () => {
 	const [packages, setPackages] = useState(null);
+	//this will be heroku url
 	const URL = 'http://localhost:4000/packages/';
 
 	const getPackages = async () => {
 		try {
 			const response = await axios.get(URL);
-			setPackages(response.data);
-			console.log(packages);
+			setPackages(response.data.packages);
 		} catch (err) {
 			console.log(err);
 		}
@@ -29,7 +29,7 @@ const Main = () => {
 					<HomeView />
 				</Route>
 				<Route path="/packages">
-					<PackagesView />
+					<PackagesView packages={packages} />
 				</Route>
 				<Route
 					path="/packages/:id"
