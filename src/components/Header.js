@@ -16,9 +16,10 @@ const Header = () => {
 	return (
 		<div>
 			{userInfo && <p>{userInfo.name}</p>}
-			<Link to="/">Home</Link>
-			<Link to="/packages">Packages</Link>
-			<Link to="/users/login">Login</Link>
+			<Link to="/">Home </Link>
+			<Link to="/packages">Packages </Link>
+			<Link to="/users/login">Login </Link>
+			<Link to="/users">Users </Link>
 			<button onClick={handleLogout}>Logout</button>
 		</div>
 	);

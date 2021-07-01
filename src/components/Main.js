@@ -1,13 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import PackagesView from '../views/PackagesView';
 import PackageView from '../views/PackageView';
 import HomeView from '../views/HomeView';
 import LoginView from '../views/LoginView';
+import UsersView from '../views/UsersView';
+import { GlobalContext } from '../context/GlobalState';
 
 const Main = () => {
 	const [packages, setPackages] = useState(null);
+	const token = localStorage.token;
+	const { userInfo, checkForToken } = useContext(GlobalContext);
 	//this will be heroku url
 	const URL = 'http://localhost:4000';
 
@@ -19,6 +23,7 @@ const Main = () => {
 			console.log(err);
 		}
 	};
+
 	useEffect(() => {
 		getPackages();
 	}, []);
@@ -42,6 +47,17 @@ const Main = () => {
 						/>
 					)}
 				/>
+				<Route
+					exact
+					path="/users"
+					render={(rp) => {
+						if (userInfo.isAdmin) {
+							return <UsersView URL={URL} {...rp} />;
+						}
+						return <Redirect to="/users/login" />;
+					}}
+				/>
+
 				<Route
 					path="/users/login"
 					render={(rp) => <LoginView {...rp} URL={URL} />}
