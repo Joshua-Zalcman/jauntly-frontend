@@ -11,7 +11,7 @@ const PackageView = ({ match, history, packages }) => {
 		} else {
 			history.push('/packages');
 		}
-	}, []);
+	}, [history, match.params.id, packages]);
 
 	const loaded = () => {
 		return (

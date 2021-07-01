@@ -4,15 +4,16 @@ import axios from 'axios';
 import PackagesView from '../views/PackagesView';
 import PackageView from '../views/PackageView';
 import HomeView from '../views/HomeView';
+import LoginView from '../views/LoginView';
 
 const Main = () => {
 	const [packages, setPackages] = useState(null);
 	//this will be heroku url
-	const URL = 'http://localhost:4000/packages/';
+	const URL = 'http://localhost:4000';
 
 	const getPackages = async () => {
 		try {
-			const response = await axios.get(URL);
+			const response = await axios.get(`${URL}/packages/`);
 			setPackages(response.data.packages);
 		} catch (err) {
 			console.log(err);
@@ -40,6 +41,10 @@ const Main = () => {
 							getPackages={getPackages}
 						/>
 					)}
+				/>
+				<Route
+					path="/users/login"
+					render={(rp) => <LoginView {...rp} URL={URL} />}
 				/>
 			</Switch>
 		</main>
