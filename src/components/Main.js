@@ -8,11 +8,11 @@ import LoginView from '../views/LoginView';
 import UsersView from '../views/UsersView';
 import RegisterUserView from '../views/RegisterUserView';
 import { GlobalContext } from '../context/GlobalState';
+import { getUserFromToken } from '../actions/token_actions';
 
 const Main = () => {
 	const [packages, setPackages] = useState(null);
-	const token = localStorage.token;
-	const { userInfo, checkForToken } = useContext(GlobalContext);
+	const { userInfo } = useContext(GlobalContext);
 	//this will be heroku url
 	const URL = 'http://localhost:4000';
 
@@ -52,7 +52,10 @@ const Main = () => {
 					exact
 					path="/users"
 					render={(rp) => {
+						const user = getUserFromToken();
 						if (userInfo.isAdmin) {
+							return <UsersView URL={URL} {...rp} />;
+						} else if (user && user.isAdmin) {
 							return <UsersView URL={URL} {...rp} />;
 						}
 						return <Redirect to="/users/login" />;

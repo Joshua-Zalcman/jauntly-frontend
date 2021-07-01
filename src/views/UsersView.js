@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const UsersView = ({ URL }) => {
+const UsersView = ({ URL, history }) => {
 	const [users, setUsers] = useState(null);
 
 	const getUsers = async () => {
