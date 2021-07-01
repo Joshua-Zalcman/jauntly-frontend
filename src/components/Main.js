@@ -28,14 +28,18 @@ const Main = () => {
 				<Route exact path="/">
 					<HomeView />
 				</Route>
-				<Route path="/packages">
+				<Route exact path="/packages">
 					<PackagesView packages={packages} />
 				</Route>
 				<Route
 					path="/packages/:id"
-					render={(rp) => {
-						<PackageView {...rp} />;
-					}}
+					render={(rp) => (
+						<PackageView
+							{...rp}
+							packages={packages}
+							getPackages={getPackages}
+						/>
+					)}
 				/>
 			</Switch>
 		</main>
