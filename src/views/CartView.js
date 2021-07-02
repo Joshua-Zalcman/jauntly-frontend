@@ -6,11 +6,14 @@ const CartView = () => {
 
 	const loaded = () => {
 		return cart.map((item) => (
-			<div key={item._id}>
-				<h2>{item.title}</h2>
-				<img src={item.image} alt={item.title} />
-				<p>{item.description}</p>
-				<p>${item.price}</p>
+			<div key={item.pack._id}>
+				<h2>{item.pack.title}</h2>
+				<img src={item.pack.image} alt={item.pack.title} />
+				<p>{item.pack.description}</p>
+				<p>${item.pack.price}</p>
+				{/* allow for updates here with form */}
+				<p>Date: {item.date}</p>
+				<p>Number of travellers: {item.guestNumber}</p>
 				<button
 					onClick={() => {
 						removeFromCart(item._id);
