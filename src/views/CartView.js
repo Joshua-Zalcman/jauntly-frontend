@@ -39,7 +39,7 @@ const CartView = ({ history }) => {
 		if (!userInfo) {
 			history.push('/users/login');
 		} else {
-			history.push('/users/checkout');
+			history.push('/checkout');
 		}
 	};
 
