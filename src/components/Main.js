@@ -13,7 +13,7 @@ import CartView from '../views/CartView';
 
 const Main = () => {
 	const [packages, setPackages] = useState(null);
-	const { userInfo } = useContext(GlobalContext);
+	const { userInfo, cart } = useContext(GlobalContext);
 	//this will be heroku url
 	const URL = 'http://localhost:4000';
 

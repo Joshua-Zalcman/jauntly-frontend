@@ -1,10 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { setCartLocalStorage } from '../actions/cart_actions';
 
 const CartView = () => {
 	const { cart, userInfo, removeFromCart } = useContext(GlobalContext);
 
 	//useEffect to check for cart in local storage
+	useEffect(() => {
+		setCartLocalStorage(cart);
+	}, [cart]);
 
 	const loaded = () => {
 		return cart.map((item) => (
