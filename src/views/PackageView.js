@@ -3,40 +3,92 @@ import { GlobalContext } from '../context/GlobalState';
 
 const PackageView = ({ match, history, packages }) => {
 	const { addToCart } = useContext(GlobalContext);
-	const [packageData, setPackageData] = useState(null);
+	const [packageData, setPackageData] = useState({
+		pack: {},
+		date: '',
+		guestNumber: 1,
+	});
 	const [message, setMessage] = useState('');
+	// const [guestNumber, setGuestNumber] = useState(1);
+	// const [date, setDate] = useState('');
 
 	useEffect(() => {
 		const id = match.params.id;
-		const pack = packages.find((pack) => pack._id === id);
-		if (pack) {
-			setPackageData(pack);
+		if (!packages) {
+			//can change to api call
+			history.push('/');
 		} else {
-			history.push('/packages');
+			const pack = packages.find((pack) => pack._id === id);
+			if (pack) {
+				setPackageData((prevState) => {
+					return { ...prevState, pack: pack };
+				});
+			} else {
+				history.push('/packages');
+			}
 		}
 	}, [history, match.params.id, packages]);
 
 	const loaded = () => {
 		return (
 			<div>
-				<h1>{packageData.title}</h1>
+				<h1>{packageData.pack.title}</h1>
 				<img
-					src={packageData.image}
-					alt={packageData.name}
+					src={packageData.pack.image}
+					alt={packageData.pack.name}
 					style={{ width: '400px' }}
 				/>
-				<p>{packageData.description}</p>
-				<p>${packageData.price}</p>
+				<p>{packageData.pack.description}</p>
+				<p>${packageData.pack.price}</p>
 				{message && <p>{message}</p>}
-				<button onClick={handleAdd}>Add to Cart</button>
+				<form onSubmit={handleSubmit}>
+					<label>
+						Number of travellers:
+						<select
+							name="guestNumber"
+							onChange={(e) =>
+								setPackageData({
+									...packageData,
+									[e.target.name]: e.target.value,
+								})
+							}>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+						</select>
+					</label>
+					<label>
+						Date:
+						<input
+							type="date"
+							value={packageData.date}
+							name="date"
+							onChange={(e) =>
+								setPackageData({
+									...packageData,
+									[e.target.name]: e.target.value,
+								})
+							}
+						/>
+					</label>
+					<input type="submit" value="Add to Cart" />
+				</form>
 			</div>
 		);
 	};
 
-	const handleAdd = () => {
+	const handleSubmit = (e) => {
 		//modal will pop down for more info
-		addToCart(packageData);
-		setMessage('Added to cart');
+		e.preventDefault();
+		if (!packageData.date) {
+			setMessage('please select date');
+		} else {
+			setMessage('Added to cart');
+			addToCart(packageData);
+		}
 	};
 
 	return <section>{packageData ? loaded() : <p>Loading...</p>}</section>;
