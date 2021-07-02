@@ -58,9 +58,9 @@ export const GlobalProvider = ({ children }) => {
 
 	//check for cart items in local storage
 
-	const setCartLocalStorage = () => {
-		localStorage.setItem('cartItems', JSON.stringify(state.cart));
-	};
+	// const setCartLocalStorage = () => {
+	// 	localStorage.setItem('cartItems', JSON.stringify(state.cart));
+	// };
 
 	return (
 		<GlobalContext.Provider
