@@ -21,6 +21,7 @@ const Header = () => {
 			<Link to="/users/login">Login </Link>
 			<Link to="/users">Users </Link>
 			<Link to="/cart">Cart </Link>
+			{userInfo._id && <Link to={`/bookings/${userInfo._id}`}>Bookings </Link>}
 			<button onClick={handleLogout}>Logout</button>
 		</div>
 	);

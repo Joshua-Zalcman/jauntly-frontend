@@ -11,6 +11,7 @@ import { GlobalContext } from '../context/GlobalState';
 import { getUserFromToken } from '../actions/token_actions';
 import CartView from '../views/CartView';
 import CheckoutView from '../views/CheckoutView';
+import BookingsView from '../views/BookingsView';
 
 const Main = () => {
 	const [packages, setPackages] = useState(null);
@@ -75,6 +76,18 @@ const Main = () => {
 				<Route
 					path="/checkout"
 					render={(rp) => <CheckoutView {...rp} URL={URL} />}
+				/>
+				<Route
+					path="/bookings/:id"
+					render={(rp) => {
+						const user = getUserFromToken();
+						if (userInfo.isAdmin) {
+							return <BookingsView URL={URL} {...rp} />;
+						} else if (user && user.isAdmin) {
+							return <BookingsView URL={URL} {...rp} />;
+						}
+						return <Redirect to="/users/login" />;
+					}}
 				/>
 			</Switch>
 		</main>
