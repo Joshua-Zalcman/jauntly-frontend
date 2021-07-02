@@ -72,7 +72,10 @@ const Main = () => {
 					render={(rp) => <RegisterUserView {...rp} URL={URL} />}
 				/>
 				<Route path="/cart" render={(rp) => <CartView {...rp} />} />
-				<Route path="/checkout" render={(rp) => <CheckoutView {...rp} />} />
+				<Route
+					path="/checkout"
+					render={(rp) => <CheckoutView {...rp} URL={URL} />}
+				/>
 			</Switch>
 		</main>
 	);
