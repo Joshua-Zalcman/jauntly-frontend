@@ -11,7 +11,12 @@ const CartView = () => {
 				<img src={item.image} alt={item.title} />
 				<p>{item.description}</p>
 				<p>${item.price}</p>
-				<button>Remove Item</button>
+				<button
+					onClick={() => {
+						removeFromCart(item._id);
+					}}>
+					Remove Item
+				</button>
 			</div>
 		));
 	};

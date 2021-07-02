@@ -15,7 +15,7 @@ export default (state, action) => {
 				...state,
 				cart: [...state.cart, action.payload],
 			};
-		case 'LOGOUT_USER':
+		case 'REMOVE_FROM_CART':
 			return {
 				...state,
 				cart: state.cart.filter((item) => item._id !== action.payload),
