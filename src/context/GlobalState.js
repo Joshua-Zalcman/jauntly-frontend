@@ -17,7 +17,7 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(Reducer, initialState);
 
-	//actions
+	//token actions
 	//check for token and login
 	function checkForToken() {
 		const token = getToken();
@@ -39,6 +39,22 @@ export const GlobalProvider = ({ children }) => {
 		});
 	}
 
+	//cart actions
+	//add to cart
+	function addToCart(pack) {
+		dispatch({
+			type: 'ADD_TO_CART',
+			payload: pack,
+		});
+	}
+	//remove from cart
+	function removeFromCart(id) {
+		dispatch({
+			type: 'REMOVE_FROM_CART',
+			payload: id,
+		});
+	}
+
 	return (
 		<GlobalContext.Provider
 			value={{
@@ -46,6 +62,8 @@ export const GlobalProvider = ({ children }) => {
 				cart: state.cart,
 				checkForToken,
 				logoutUser,
+				addToCart,
+				removeFromCart,
 			}}>
 			{children}
 		</GlobalContext.Provider>
