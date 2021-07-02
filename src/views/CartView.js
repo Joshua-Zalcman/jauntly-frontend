@@ -4,6 +4,8 @@ import { GlobalContext } from '../context/GlobalState';
 const CartView = () => {
 	const { cart, userInfo, removeFromCart } = useContext(GlobalContext);
 
+	//useEffect to check for cart in local storage
+
 	const loaded = () => {
 		return cart.map((item) => (
 			<div key={item.pack._id}>
@@ -16,7 +18,7 @@ const CartView = () => {
 				<p>Number of travellers: {item.guestNumber}</p>
 				<button
 					onClick={() => {
-						removeFromCart(item._id);
+						removeFromCart(item.pack._id);
 					}}>
 					Remove Item
 				</button>

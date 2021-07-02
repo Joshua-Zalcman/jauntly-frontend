@@ -4,6 +4,7 @@ import {
 	getUserFromToken,
 	removeTokenFromStorage,
 } from '../actions/token_actions';
+import { setCartLocalStorage } from '../actions/cart_actions';
 import Reducer from './Reducer';
 
 //initial state
@@ -46,6 +47,7 @@ export const GlobalProvider = ({ children }) => {
 			type: 'ADD_TO_CART',
 			payload: pack,
 		});
+		setCartLocalStorage(state.cart);
 	}
 	//remove from cart
 	function removeFromCart(id) {
@@ -53,6 +55,7 @@ export const GlobalProvider = ({ children }) => {
 			type: 'REMOVE_FROM_CART',
 			payload: id,
 		});
+		setCartLocalStorage(state.cart);
 	}
 
 	return (
