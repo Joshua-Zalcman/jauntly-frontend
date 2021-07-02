@@ -20,6 +20,7 @@ const Header = () => {
 			<Link to="/packages">Packages </Link>
 			<Link to="/users/login">Login </Link>
 			<Link to="/users">Users </Link>
+			<Link to="/cart">Cart </Link>
 			<button onClick={handleLogout}>Logout</button>
 		</div>
 	);

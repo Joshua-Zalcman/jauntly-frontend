@@ -9,6 +9,7 @@ import UsersView from '../views/UsersView';
 import RegisterUserView from '../views/RegisterUserView';
 import { GlobalContext } from '../context/GlobalState';
 import { getUserFromToken } from '../actions/token_actions';
+import CartView from '../views/CartView';
 
 const Main = () => {
 	const [packages, setPackages] = useState(null);
@@ -69,6 +70,7 @@ const Main = () => {
 					path="/users/register"
 					render={(rp) => <RegisterUserView {...rp} URL={URL} />}
 				/>
+				<Route path="/cart" render={(rp) => <CartView {...rp} />} />
 			</Switch>
 		</main>
 	);

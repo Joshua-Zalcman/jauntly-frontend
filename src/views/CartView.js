@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
 const CartView = () => {
-	const { cart } = useContext(GlobalContext);
+	const { cart, userInfo, removeFromCart } = useContext(GlobalContext);
 
 	const loaded = () => {
 		return cart.map((item) => (
