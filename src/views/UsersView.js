@@ -20,7 +20,9 @@ const UsersView = ({ URL, history }) => {
 	}, []);
 
 	const loaded = () => {
-		return users.map((user) => <UserView key={user._id} user={user} />);
+		return users.map((user) => (
+			<UserView key={user._id} user={user} URL={URL} />
+		));
 	};
 	return (
 		<div>
