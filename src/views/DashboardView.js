@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import UsersView from './UsersView';
 import BookingsView from './BookingsView';
 
