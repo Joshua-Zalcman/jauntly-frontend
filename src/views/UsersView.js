@@ -18,10 +18,18 @@ const UsersView = ({ URL, history }) => {
 	useEffect(() => {
 		getUsers();
 	}, []);
+	const refreshInfo = () => {
+		getUsers();
+	};
 
 	const loaded = () => {
 		return users.map((user) => (
-			<UserView key={user._id} user={user} URL={URL} />
+			<UserView
+				key={user._id}
+				user={user}
+				URL={URL}
+				refreshInfo={refreshInfo}
+			/>
 		));
 	};
 	return (
