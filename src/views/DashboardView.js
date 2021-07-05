@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import UsersView from './UsersView';
+import BookingsView from './BookingsView';
 
 const DashboardView = ({ URL }) => {
 	//state
@@ -22,7 +23,7 @@ const DashboardView = ({ URL }) => {
 				<button onClick={handleClick} disabled={!viewItem}>
 					Users
 				</button>
-				{viewItem ? <div>Bookings</div> : <UsersView URL={URL} />}
+				{viewItem ? <BookingsView URL={URL} /> : <UsersView URL={URL} />}
 			</div>
 		</div>
 	);
