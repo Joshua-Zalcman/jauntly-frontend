@@ -19,9 +19,18 @@ const BookingsView = ({ URL, history }) => {
 		getBookings();
 	}, []);
 
+	const refreshInfo = () => {
+		getBookings();
+	};
+
 	const loaded = () => {
 		return bookings.map((booking) => (
-			<BookingView key={booking._id} booking={booking} URL={URL} />
+			<BookingView
+				key={booking._id}
+				booking={booking}
+				URL={URL}
+				refreshInfo={refreshInfo}
+			/>
 		));
 	};
 	return (
