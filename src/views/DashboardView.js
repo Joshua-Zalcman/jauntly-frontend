@@ -6,12 +6,11 @@ const DashboardView = ({ URL }) => {
 	const [viewItem, setViewItem] = useState(true);
 
 	//useEffect to load booking
-  const get
 
 	//form handlers
-  const handleClick = ()=>{
-    setViewItem(!viewItem)
-  }
+	const handleClick = () => {
+		setViewItem(!viewItem);
+	};
 
 	return (
 		<div>
@@ -19,7 +18,7 @@ const DashboardView = ({ URL }) => {
 			<div>
 				<button onClick={handleClick}>Bookings</button>
 				<button onClick={handleClick}>Users</button>
-        {viewItem ? <div>Bookings</div>:<UsersView/>}
+				{viewItem ? <div>Bookings</div> : <UsersView URL={URL} />}
 			</div>
 		</div>
 	);

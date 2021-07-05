@@ -12,6 +12,7 @@ import { getUserFromToken } from '../actions/token_actions';
 import CartView from '../views/CartView';
 import CheckoutView from '../views/CheckoutView';
 import BookingsView from '../views/BookingsView';
+import DashboardView from '../views/DashboardView';
 
 const Main = () => {
 	const [packages, setPackages] = useState(null);
@@ -85,6 +86,18 @@ const Main = () => {
 							return <BookingsView URL={URL} {...rp} />;
 						} else if (user && user.isAdmin) {
 							return <BookingsView URL={URL} {...rp} />;
+						}
+						return <Redirect to="/users/login" />;
+					}}
+				/>
+				<Route
+					path="/admin/dashboard"
+					render={(rp) => {
+						const user = getUserFromToken();
+						if (userInfo.isAdmin) {
+							return <DashboardView URL={URL} {...rp} />;
+						} else if (user && user.isAdmin) {
+							return <DashboardView URL={URL} {...rp} />;
 						}
 						return <Redirect to="/users/login" />;
 					}}
