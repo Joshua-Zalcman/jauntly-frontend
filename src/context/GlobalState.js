@@ -79,6 +79,7 @@ export const GlobalProvider = ({ children }) => {
 				logoutUser,
 				addToCart,
 				removeFromCart,
+				emptyCart,
 			}}>
 			{children}
 		</GlobalContext.Provider>
