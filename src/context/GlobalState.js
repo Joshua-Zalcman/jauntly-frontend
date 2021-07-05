@@ -55,6 +55,14 @@ export const GlobalProvider = ({ children }) => {
 			payload: id,
 		});
 	}
+	//empty cart
+	function emptyCart() {
+		const cartItems = [];
+		dispatch({
+			type: 'EMPTY_CART',
+			payload: cartItems,
+		});
+	}
 
 	//check for cart items in local storage
 

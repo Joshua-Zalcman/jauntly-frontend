@@ -9,7 +9,7 @@ const BookingsView = ({ URL, history }) => {
 	const getBookings = async () => {
 		try {
 			const response = await axios.get(`${URL}/bookings`);
-			setBookings(response.data.users);
+			setBookings(response.data.bookings);
 		} catch (err) {
 			console.log(err);
 		}

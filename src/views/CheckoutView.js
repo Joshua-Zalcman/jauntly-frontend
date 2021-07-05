@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const CheckoutView = ({ URL, history }) => {
-	const { userInfo, cart } = useContext(GlobalContext);
+	const { userInfo, cart, emptyCart } = useContext(GlobalContext);
 	const [message, setMessage] = useState('');
 	const totalPrice = cart.reduce(
 		(acc, item) => acc + item.pack.price * item.guestNumber,
@@ -31,7 +31,7 @@ const CheckoutView = ({ URL, history }) => {
 		});
 		const response = await axios.post(
 			`${URL}/bookings`,
-			{ user: userInfo._id, totalPrice, bookingItems },
+			{ user: userInfo._id, name: userInfo.name, totalPrice, bookingItems },
 			{
 				headers: {
 					'Content-Type': 'Application/json',
@@ -39,6 +39,7 @@ const CheckoutView = ({ URL, history }) => {
 			}
 		);
 		setMessage(response.data.message);
+		emptyCart();
 	};
 
 	const loaded = () => {

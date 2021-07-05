@@ -20,6 +20,11 @@ export default (state, action) => {
 				...state,
 				cart: state.cart.filter((item) => item.pack._id !== action.payload),
 			};
+		case 'EMPTY_CART':
+			return {
+				...state,
+				cart: action.payload,
+			};
 		default:
 			return state;
 	}

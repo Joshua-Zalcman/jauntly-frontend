@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalState';
 
 const Header = () => {
-	const { userInfo, logoutUser, checkForToken } = useContext(GlobalContext);
+	const { userInfo, logoutUser, checkForToken, emptyCart } =
+		useContext(GlobalContext);
 
 	useEffect(() => {
 		checkForToken();
@@ -11,6 +12,7 @@ const Header = () => {
 
 	const handleLogout = () => {
 		logoutUser();
+		emptyCart();
 	};
 
 	return (
