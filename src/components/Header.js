@@ -1,8 +1,9 @@
 import { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalState';
 
 const Header = () => {
+	const history = useHistory();
 	const { userInfo, logoutUser, checkForToken, emptyCart } =
 		useContext(GlobalContext);
 
@@ -13,6 +14,7 @@ const Header = () => {
 	const handleLogout = () => {
 		logoutUser();
 		emptyCart();
+		history.push('/');
 	};
 
 	return (

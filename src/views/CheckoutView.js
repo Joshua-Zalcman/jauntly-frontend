@@ -7,6 +7,7 @@ import axios from 'axios';
 const CheckoutView = ({ URL, history }) => {
 	const { userInfo, cart, emptyCart } = useContext(GlobalContext);
 	const [message, setMessage] = useState('');
+	const [booking, setBooking] = useState('');
 	const totalPrice = cart.reduce(
 		(acc, item) => acc + item.pack.price * item.guestNumber,
 		0
@@ -39,6 +40,7 @@ const CheckoutView = ({ URL, history }) => {
 			}
 		);
 		setMessage(response.data.message);
+		setBooking(response.data.booking);
 		emptyCart();
 	};
 
@@ -64,7 +66,7 @@ const CheckoutView = ({ URL, history }) => {
 			<button onClick={handleBooking}>Book</button>
 			{message && (
 				<p>
-					{message} <Link to="/">View booking</Link>
+					{message} <Link to={`/bookings/${booking._id}`}>View booking</Link>
 				</p>
 			)}
 		</div>
