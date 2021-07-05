@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const UserView = ({ user, URL }) => {
+const UserView = ({ user, URL, refreshInfo }) => {
+	const [showAdmin, setShowAdmin] = useState(false);
 	const [userDetails, setUserDetails] = useState({
 		id: '',
 		name: '',
@@ -20,7 +21,12 @@ const UserView = ({ user, URL }) => {
 				isAdmin: user.isAdmin,
 			});
 		}
-	}, []);
+		if (user.isAdmin) {
+			setShowAdmin(true);
+		} else {
+			setShowAdmin(false);
+		}
+	}, [refreshInfo]);
 
 	const updateUser = async () => {
 		try {
@@ -41,11 +47,13 @@ const UserView = ({ user, URL }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		updateUser();
+		refreshInfo();
 	};
+
 	return (
 		<div>
 			<h2>
-				{userDetails.name} {userDetails.isAdmin && '(Admin)'}
+				{userDetails.name} {showAdmin && '(Admin)'}
 			</h2>
 			<form onSubmit={handleSubmit}>
 				<label>Admin: </label>
