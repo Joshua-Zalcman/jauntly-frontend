@@ -5,13 +5,12 @@ import PackagesView from '../views/PackagesView';
 import PackageView from '../views/PackageView';
 import HomeView from '../views/HomeView';
 import LoginView from '../views/LoginView';
-import UsersView from '../views/UsersView';
 import RegisterUserView from '../views/RegisterUserView';
 import { GlobalContext } from '../context/GlobalState';
 import { getUserFromToken } from '../actions/token_actions';
 import CartView from '../views/CartView';
 import CheckoutView from '../views/CheckoutView';
-import BookingsView from '../views/BookingsView';
+import MyBookingsView from '../views/MyBookingsView';
 import DashboardView from '../views/DashboardView';
 
 const Main = () => {
@@ -52,19 +51,7 @@ const Main = () => {
 						/>
 					)}
 				/>
-				<Route
-					exact
-					path="/users"
-					render={(rp) => {
-						const user = getUserFromToken();
-						if (userInfo.isAdmin) {
-							return <UsersView URL={URL} {...rp} />;
-						} else if (user && user.isAdmin) {
-							return <UsersView URL={URL} {...rp} />;
-						}
-						return <Redirect to="/users/login" />;
-					}}
-				/>
+
 				<Route
 					path="/users/login"
 					render={(rp) => <LoginView {...rp} URL={URL} />}
@@ -81,13 +68,7 @@ const Main = () => {
 				<Route
 					path="/bookings/:id"
 					render={(rp) => {
-						const user = getUserFromToken();
-						if (userInfo.isAdmin) {
-							return <BookingsView URL={URL} {...rp} />;
-						} else if (user && user.isAdmin) {
-							return <BookingsView URL={URL} {...rp} />;
-						}
-						return <Redirect to="/users/login" />;
+						return <MyBookingsView URL={URL} {...rp} />;
 					}}
 				/>
 				<Route

@@ -19,7 +19,7 @@ const Header = () => {
 			<Link to="/">Home </Link>
 			<Link to="/packages">Packages </Link>
 			<Link to="/users/login">Login </Link>
-			<Link to="/users">Users </Link>
+			{userInfo.isAdmin && <Link to="/admin/dashboard">Dashboard </Link>}
 			<Link to="/cart">Cart </Link>
 			{userInfo._id && <Link to={`/bookings/${userInfo._id}`}>Bookings </Link>}
 			<button onClick={handleLogout}>Logout</button>

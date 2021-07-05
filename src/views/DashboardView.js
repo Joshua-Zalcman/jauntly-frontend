@@ -16,8 +16,12 @@ const DashboardView = ({ URL }) => {
 		<div>
 			<h1>Admin Dashboard</h1>
 			<div>
-				<button onClick={handleClick}>Bookings</button>
-				<button onClick={handleClick}>Users</button>
+				<button onClick={handleClick} disabled={viewItem}>
+					Bookings
+				</button>
+				<button onClick={handleClick} disabled={!viewItem}>
+					Users
+				</button>
 				{viewItem ? <div>Bookings</div> : <UsersView URL={URL} />}
 			</div>
 		</div>

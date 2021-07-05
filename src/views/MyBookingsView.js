@@ -3,7 +3,7 @@ import { GlobalContext } from '../context/GlobalState';
 import axios from 'axios';
 import { getToken } from '../actions/token_actions';
 
-const BookingsView = ({ URL, history }) => {
+const MyBookingsView = ({ URL, history }) => {
 	const { userInfo } = useContext(GlobalContext);
 	const [bookings, setBookings] = useState(null);
 	useEffect(() => {
@@ -19,7 +19,6 @@ const BookingsView = ({ URL, history }) => {
 
 	const getBookings = async (id) => {
 		const response = await axios.get(`${URL}/bookings/${id}`);
-		console.log(response);
 		setBookings(response.data.bookings);
 	};
 
@@ -42,9 +41,9 @@ const BookingsView = ({ URL, history }) => {
 	return (
 		<div>
 			<h1>Your Bookings</h1>
-			{bookings && loaded()}
+			{bookings && bookings.length > 0 ? loaded() : <p>You have no bookings</p>}
 		</div>
 	);
 };
 
-export default BookingsView;
+export default MyBookingsView;
