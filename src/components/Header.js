@@ -83,6 +83,13 @@ const Header = () => {
 									</LinkContainer>
 								</NavItem>
 							)}
+							{!userInfo.name && (
+								<NavItem>
+									<LinkContainer to="/users/register">
+										<NavLink>Sign Up</NavLink>
+									</LinkContainer>
+								</NavItem>
+							)}
 							{userInfo.name && (
 								<UncontrolledDropdown nav>
 									<DropdownToggle
