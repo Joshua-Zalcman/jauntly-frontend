@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 const PackagesView = ({ packages }) => {
 	const [packageList, setpackageList] = useState('');
@@ -31,15 +32,15 @@ const PackagesView = ({ packages }) => {
 		<section>
 			<h1>Packages</h1>
 			<h3>Brazil</h3>
-			<button id="Rio de Janeiro" onClick={handleClick}>
+			<Button color="primary" id="Rio de Janeiro" onClick={handleClick}>
 				Rio de Janeiro
-			</button>
-			<button id="Sao Paulo" onClick={handleClick}>
+			</Button>
+			<Button color="primary" id="Sao Paulo" onClick={handleClick}>
 				Sao Paulo
-			</button>
-			<button id="Manaus" onClick={handleClick}>
+			</Button>
+			<Button color="primary" id="Manaus" onClick={handleClick}>
 				Manaus
-			</button>
+			</Button>
 			<p>Coming soon...Peru!</p>
 			{packageList ? loaded() : <p>Loading...</p>}
 		</section>

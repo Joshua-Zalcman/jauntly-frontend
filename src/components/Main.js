@@ -12,6 +12,7 @@ import CartView from '../views/CartView';
 import CheckoutView from '../views/CheckoutView';
 import MyBookingsView from '../views/MyBookingsView';
 import DashboardView from '../views/DashboardView';
+import { Container } from 'reactstrap';
 
 const Main = () => {
 	const [packages, setPackages] = useState(null);
@@ -34,56 +35,58 @@ const Main = () => {
 
 	return (
 		<main>
-			<Switch>
-				<Route exact path="/">
-					<HomeView />
-				</Route>
-				<Route exact path="/packages">
-					<PackagesView packages={packages} />
-				</Route>
-				<Route
-					path="/packages/:id"
-					render={(rp) => (
-						<PackageView
-							{...rp}
-							packages={packages}
-							getPackages={getPackages}
-						/>
-					)}
-				/>
+			<Container>
+				<Switch>
+					<Route exact path="/">
+						<HomeView />
+					</Route>
+					<Route exact path="/packages">
+						<PackagesView packages={packages} />
+					</Route>
+					<Route
+						path="/packages/:id"
+						render={(rp) => (
+							<PackageView
+								{...rp}
+								packages={packages}
+								getPackages={getPackages}
+							/>
+						)}
+					/>
 
-				<Route
-					path="/users/login"
-					render={(rp) => <LoginView {...rp} URL={URL} />}
-				/>
-				<Route
-					path="/users/register"
-					render={(rp) => <RegisterUserView {...rp} URL={URL} />}
-				/>
-				<Route path="/cart" render={(rp) => <CartView {...rp} />} />
-				<Route
-					path="/checkout"
-					render={(rp) => <CheckoutView {...rp} URL={URL} />}
-				/>
-				<Route
-					path="/bookings/:id"
-					render={(rp) => {
-						return <MyBookingsView URL={URL} {...rp} />;
-					}}
-				/>
-				<Route
-					path="/admin/dashboard"
-					render={(rp) => {
-						const user = getUserFromToken();
-						if (userInfo.isAdmin) {
-							return <DashboardView URL={URL} {...rp} />;
-						} else if (user && user.isAdmin) {
-							return <DashboardView URL={URL} {...rp} />;
-						}
-						return <Redirect to="/users/login" />;
-					}}
-				/>
-			</Switch>
+					<Route
+						path="/users/login"
+						render={(rp) => <LoginView {...rp} URL={URL} />}
+					/>
+					<Route
+						path="/users/register"
+						render={(rp) => <RegisterUserView {...rp} URL={URL} />}
+					/>
+					<Route path="/cart" render={(rp) => <CartView {...rp} />} />
+					<Route
+						path="/checkout"
+						render={(rp) => <CheckoutView {...rp} URL={URL} />}
+					/>
+					<Route
+						path="/bookings/:id"
+						render={(rp) => {
+							return <MyBookingsView URL={URL} {...rp} />;
+						}}
+					/>
+					<Route
+						path="/admin/dashboard"
+						render={(rp) => {
+							const user = getUserFromToken();
+							if (userInfo.isAdmin) {
+								return <DashboardView URL={URL} {...rp} />;
+							} else if (user && user.isAdmin) {
+								return <DashboardView URL={URL} {...rp} />;
+							}
+							return <Redirect to="/users/login" />;
+						}}
+					/>
+				</Switch>
+			</Container>
 		</main>
 	);
 };
