@@ -8,6 +8,10 @@ import {
 	CardImg,
 	CardText,
 	CardTitle,
+	UncontrolledDropdown,
+	DropdownItem,
+	DropdownMenu,
+	DropdownToggle,
 } from 'reactstrap';
 
 const PackagesView = ({ packages }) => {
@@ -45,16 +49,32 @@ const PackagesView = ({ packages }) => {
 	return (
 		<section>
 			<h1>Packages</h1>
-			<h3>Brazil</h3>
-			<Button color="primary" id="Rio de Janeiro" onClick={handleClick}>
-				Rio de Janeiro
-			</Button>
-			<Button color="primary" id="Sao Paulo" onClick={handleClick}>
-				Sao Paulo
-			</Button>
-			<Button color="primary" id="Manaus" onClick={handleClick}>
-				Manaus
-			</Button>
+			<UncontrolledDropdown navbar>
+				<DropdownToggle
+					aria-haspopup={true}
+					caret
+					color="default"
+					data-toggle="dropdown"
+					href="#pablo"
+					id="navbarDropdownMenuLink"
+					onClick={(e) => e.preventDefault()}>
+					Brazil
+				</DropdownToggle>
+				<DropdownMenu
+					aria-labelledby="navbarDropdownMenuLink"
+					className="bg-primary">
+					<DropdownItem id="Rio de Janeiro" onClick={handleClick}>
+						Rio de Janeiro
+					</DropdownItem>
+					<DropdownItem id="Sao Paulo" onClick={handleClick}>
+						Sao Paulo
+					</DropdownItem>
+					<DropdownItem id="Manaus" onClick={handleClick}>
+						Manaus
+					</DropdownItem>
+				</DropdownMenu>
+			</UncontrolledDropdown>
+
 			<p>Coming soon...Peru!</p>
 			{packageList ? loaded() : <p>Loading...</p>}
 		</section>

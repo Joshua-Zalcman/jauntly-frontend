@@ -44,7 +44,7 @@ const Header = () => {
 					}}
 				/>
 			) : null}
-			<Navbar color="warning" expand="md">
+			<Navbar color="warning" expand="lg">
 				<Container>
 					<NavbarBrand href="/" onClick={(e) => e.preventDefault()}>
 						Jauntly
