@@ -46,7 +46,6 @@ export const GlobalProvider = ({ children }) => {
 			type: 'ADD_TO_CART',
 			payload: pack,
 		});
-		console.log(state);
 	}
 	//remove from cart
 	function removeFromCart(id) {
