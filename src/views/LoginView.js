@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { FormGroup, Label, Input, Button, Col, Alert } from 'reactstrap';
 
 const LoginView = ({ URL, history }) => {
 	const { checkForToken } = useContext(GlobalContext);
@@ -39,22 +40,34 @@ const LoginView = ({ URL, history }) => {
 
 	return (
 		<section>
-			<h1>Login</h1>
-			{message && <p>{message}</p>}
+			<h1 className="mb-1">Login</h1>
+			{message && <Alert color="danger">{message}</Alert>}
 			<form onSubmit={handleSubmit}>
-				<input
-					type="text"
-					placeholder="name"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<input
-					type="password"
-					placeholder="password"
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-				/>
-				<input type="submit" value="Login" />
+				<FormGroup row>
+					<Label md={2}>Email: </Label>
+					<Col md={10}>
+						<Input
+							type="text"
+							placeholder="Enter Email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</Col>
+				</FormGroup>
+				<FormGroup row>
+					<Label md={2}>Password: </Label>
+					<Col md={10}>
+						<Input
+							type="password"
+							value={password}
+							placeholder="Enter Password"
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</Col>
+				</FormGroup>
+				<Button type="submit" className="  my-2 " color="primary">
+					Login
+				</Button>
 			</form>
 			<p>
 				New? Sign up <Link to="/users/register">here!</Link>
