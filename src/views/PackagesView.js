@@ -12,6 +12,7 @@ import {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
+	Nav,
 } from 'reactstrap';
 
 const PackagesView = ({ packages }) => {
@@ -48,35 +49,63 @@ const PackagesView = ({ packages }) => {
 
 	return (
 		<section>
-			<h1>Packages</h1>
-			<UncontrolledDropdown navbar>
-				<DropdownToggle
-					aria-haspopup={true}
-					caret
-					color="default"
-					data-toggle="dropdown"
-					href="#pablo"
-					id="navbarDropdownMenuLink"
-					onClick={(e) => e.preventDefault()}>
-					Brazil
-				</DropdownToggle>
-				<DropdownMenu
-					aria-labelledby="navbarDropdownMenuLink"
-					className="bg-primary">
-					<DropdownItem id="Rio de Janeiro" onClick={handleClick}>
-						Rio de Janeiro
-					</DropdownItem>
-					<DropdownItem id="Sao Paulo" onClick={handleClick}>
-						Sao Paulo
-					</DropdownItem>
-					<DropdownItem id="Manaus" onClick={handleClick}>
-						Manaus
-					</DropdownItem>
-				</DropdownMenu>
-			</UncontrolledDropdown>
+			<h1 className="text-center mb-4">Trip Packages</h1>
+			<div className="d-flex justify-content-center mb-4">
+				<UncontrolledDropdown navbar>
+					<DropdownToggle
+						aria-haspopup={true}
+						caret
+						color="primary"
+						data-toggle="dropdown"
+						href="#pablo"
+						id="navbarDropdownMenuLink"
+						onClick={(e) => e.preventDefault()}>
+						Brazil
+					</DropdownToggle>
+					<DropdownMenu
+						aria-labelledby="navbarDropdownMenuLink"
+						className="bg-light">
+						<DropdownItem id="Rio de Janeiro" onClick={handleClick}>
+							Rio de Janeiro
+						</DropdownItem>
+						<DropdownItem id="Sao Paulo" onClick={handleClick}>
+							Sao Paulo
+						</DropdownItem>
+						<DropdownItem id="Manaus" onClick={handleClick}>
+							Manaus
+						</DropdownItem>
+					</DropdownMenu>
+				</UncontrolledDropdown>
+				<UncontrolledDropdown navbar>
+					<DropdownToggle
+						aria-haspopup={true}
+						caret
+						color="default"
+						data-toggle="dropdown"
+						href="#pablo"
+						id="navbarDropdownMenuLink"
+						onClick={(e) => e.preventDefault()}>
+						Peru
+					</DropdownToggle>
+					<DropdownMenu
+						aria-labelledby="navbarDropdownMenuLink"
+						className="bg-light">
+						<DropdownItem id="Rio de Janeiro" onClick={handleClick}>
+							Rio de Janeiro
+						</DropdownItem>
+						<DropdownItem id="Sao Paulo" onClick={handleClick}>
+							Sao Paulo
+						</DropdownItem>
+						<DropdownItem id="Manaus" onClick={handleClick}>
+							Manaus
+						</DropdownItem>
+					</DropdownMenu>
+				</UncontrolledDropdown>
+			</div>
 
-			<p>Coming soon...Peru!</p>
-			{packageList ? loaded() : <p>Loading...</p>}
+			<div className="d-flex flex-wrap justify-content-around">
+				{packageList ? loaded() : <p>Loading...</p>}
+			</div>
 		</section>
 	);
 };
