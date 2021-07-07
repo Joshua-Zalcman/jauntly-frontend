@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Alert, Button, FormGroup, Label, ListGroupItem } from 'reactstrap';
 
 const BookingView = ({ booking, URL, refreshInfo }) => {
 	const [message, setMessage] = useState('');
@@ -51,8 +52,8 @@ const BookingView = ({ booking, URL, refreshInfo }) => {
 	};
 
 	return (
-		<div>
-			<h2>{bookingDetails.name}</h2>
+		<ListGroupItem className="p-3">
+			<h2 className="mb-2 mt-0">{bookingDetails.name}</h2>
 			{bookingDetails.bookings &&
 				bookingDetails.bookings.map((bookingItem) => (
 					<div key={bookingItem._id}>
@@ -62,34 +63,55 @@ const BookingView = ({ booking, URL, refreshInfo }) => {
 					</div>
 				))}
 			<form onSubmit={handleSubmit}>
-				<label>
-					Booking paid:
-					<input
-						type="checkbox"
-						checked={bookingDetails.isPaid}
-						onChange={(e) => {
-							setBookingDetails((prevState) => {
-								return { ...prevState, isPaid: !bookingDetails.isPaid };
-							});
-						}}
-					/>
-				</label>
-				<label>
-					Booking complete:
-					<input
-						type="checkbox"
-						checked={bookingDetails.isComplete}
-						onChange={(e) => {
-							setBookingDetails((prevState) => {
-								return { ...prevState, isComplete: !bookingDetails.isComplete };
-							});
-						}}
-					/>
-				</label>
-				<input type="submit" value="Update Booking" />
+				<FormGroup check>
+					<Label check>
+						Booking paid
+						<input
+							type="checkbox"
+							checked={bookingDetails.isPaid}
+							className="form-check-input"
+							onChange={(e) => {
+								setBookingDetails((prevState) => {
+									return { ...prevState, isPaid: !bookingDetails.isPaid };
+								});
+							}}
+						/>
+						<span className="form-check-sign">
+							<span className="check"></span>
+						</span>
+					</Label>
+				</FormGroup>
+				<FormGroup check>
+					<Label check>
+						Booking complete
+						<input
+							type="checkbox"
+							checked={bookingDetails.isComplete}
+							className="form-check-input"
+							onChange={(e) => {
+								setBookingDetails((prevState) => {
+									return {
+										...prevState,
+										isComplete: !bookingDetails.isComplete,
+									};
+								});
+							}}
+						/>
+						<span className="form-check-sign">
+							<span className="check"></span>
+						</span>
+					</Label>
+				</FormGroup>
+				<Button color="info" type="submit">
+					Update Booking
+				</Button>
 			</form>
-			{message && <p>{message}</p>}
-		</div>
+			{message && (
+				<Alert className="my-2" color="success">
+					{message}
+				</Alert>
+			)}
+		</ListGroupItem>
 	);
 };
 

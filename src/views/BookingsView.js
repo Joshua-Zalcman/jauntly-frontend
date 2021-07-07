@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import BookingView from './BookingView';
+import { ListGroup } from 'reactstrap';
 
 const BookingsView = ({ URL, history }) => {
 	const [bookings, setBookings] = useState(null);
@@ -35,7 +36,7 @@ const BookingsView = ({ URL, history }) => {
 	return (
 		<div>
 			<h1>Bookings</h1>
-			{bookings ? loaded() : <p>Loading...</p>}
+			{bookings ? <ListGroup>{loaded()}</ListGroup> : <p>Loading...</p>}
 		</div>
 	);
 };
