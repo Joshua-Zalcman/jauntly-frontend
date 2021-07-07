@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { setCartLocalStorage } from '../actions/cart_actions';
 import {
+	Alert,
 	Button,
 	Card,
 	CardBody,
@@ -67,7 +68,13 @@ const CartView = ({ history }) => {
 		<Container>
 			<h1 className="mb-3">Your Cart:</h1>
 			<div className="d-flex flex-wrap justify-content-between">
-				{cart.length > 0 ? loaded() : <p>Your Cart is empty</p>}
+				{cart.length > 0 ? (
+					loaded()
+				) : (
+					<Alert color="warning" className="mb-5">
+						Your Cart is empty
+					</Alert>
+				)}
 			</div>
 
 			<h2 className="my-2 text-center">Your total: ${totalPrice}</h2>

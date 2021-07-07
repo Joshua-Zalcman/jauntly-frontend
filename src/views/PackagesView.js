@@ -54,6 +54,7 @@ const PackagesView = ({ packages }) => {
 					<DropdownToggle
 						aria-haspopup={true}
 						caret
+						className="d-block"
 						color="primary"
 						data-toggle="dropdown"
 						href="#pablo"

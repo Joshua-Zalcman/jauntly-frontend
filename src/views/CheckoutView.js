@@ -3,6 +3,15 @@ import { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import {
+	Card,
+	CardImg,
+	CardBody,
+	CardTitle,
+	CardText,
+	Button,
+	Alert,
+} from 'reactstrap';
 
 const CheckoutView = ({ URL, history }) => {
 	const { userInfo, cart, emptyCart } = useContext(GlobalContext);
@@ -46,28 +55,35 @@ const CheckoutView = ({ URL, history }) => {
 
 	const loaded = () => {
 		return cart.map((item) => (
-			<div key={item.pack._id}>
-				<h2>{item.pack.title}</h2>
-				<p>${item.pack.price}</p>
-				<p>Date: {item.date}</p>
-				<p>Number of travellers: {item.guestNumber}</p>
-			</div>
+			<Card key={item.pack._id}>
+				<CardBody>
+					<h2 className="mt-0">{item.pack.title}</h2>
+					<p>${item.pack.price * item.guestNumber}</p>
+					<p>Date: {item.date}</p>
+					<p>Number of travellers: {item.guestNumber}</p>
+				</CardBody>
+			</Card>
 		));
 	};
 
 	return (
 		<div>
 			<h1>Checkout</h1>
-			<p>Your Total: ${totalPrice}</p>
-			{cart ? loaded() : <p>Loading...</p>}
-			<p>
+			<h4>Your Total: ${totalPrice}</h4>
+			<div className="d-flex flex-wrap mt-4 justify-content-between">
+				{cart ? loaded() : <p>Loading...</p>}
+			</div>
+
+			<h5>
 				Need to update something? <Link to="/cart">Back to Cart</Link>
-			</p>
-			<button onClick={handleBooking}>Book</button>
+			</h5>
+			<Button color="primary" onClick={handleBooking}>
+				Book
+			</Button>
 			{message && (
-				<p>
+				<Alert color="success">
 					{message} <Link to={`/bookings/${booking._id}`}>View booking</Link>
-				</p>
+				</Alert>
 			)}
 		</div>
 	);

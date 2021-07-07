@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import axios from 'axios';
 import { getToken } from '../actions/token_actions';
+import { Col, Row, ListGroup, ListGroupItem, Button } from 'reactstrap';
 
 const MyBookingsView = ({ URL, history }) => {
 	const { userInfo } = useContext(GlobalContext);
@@ -24,24 +25,51 @@ const MyBookingsView = ({ URL, history }) => {
 
 	const loaded = () => {
 		return bookings.map((booking, index) => (
-			<div key={booking._id}>
+			<ListGroup key={booking._id} style={{ width: '330px' }} md={6}>
 				<h3>Booking {index + 1}</h3>
 				{booking.bookingItems.map((pack, index) => (
-					<div key={pack._id}>
-						<h5>Package {index + 1}</h5>
-						<p>{pack.title}</p>
-						<p>Number of travellers: {pack.guestNumber}</p>
-						<p>Date: {pack.date.split('T')[0]}</p>
-					</div>
+					<ListGroupItem key={pack._id}>
+						<div className=" d-flex justify-content-around align-items-center mb-3">
+							<div
+								style={{
+									backgroundImage: `url(${pack.image})`,
+									backgroundSize: 'cover',
+									backgroundRepeat: 'no-repeat',
+									width: '100px',
+									maxWidth: '100px',
+									height: '100px',
+								}}></div>
+							<div>
+								<h5>Package {index + 1}</h5>
+								<p>{pack.title}</p>
+								<p>Number of travellers: {pack.guestNumber}</p>
+								<p>Date: {pack.date.split('T')[0]}</p>
+							</div>
+						</div>
+						<Col sm={12}>
+							<Button
+								className="mx-auto w-100 d-block "
+								color="success"
+								disabled>
+								Pay Now
+							</Button>
+						</Col>
+					</ListGroupItem>
 				))}
-			</div>
+			</ListGroup>
 		));
 	};
 
 	return (
 		<div>
 			<h1>Your Bookings</h1>
-			{bookings && bookings.length > 0 ? loaded() : <p>You have no bookings</p>}
+			<div className="d-flex flex-wrap justify-content-between">
+				{bookings && bookings.length > 0 ? (
+					loaded()
+				) : (
+					<p>You have no bookings</p>
+				)}
+			</div>
 		</div>
 	);
 };

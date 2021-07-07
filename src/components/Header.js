@@ -44,7 +44,7 @@ const Header = () => {
 					}}
 				/>
 			) : null}
-			<Navbar color="warning" expand="lg">
+			<Navbar color="primary" expand="lg">
 				<Container>
 					<LinkContainer to="/">
 						<NavbarBrand>Jauntly</NavbarBrand>
@@ -53,6 +53,7 @@ const Header = () => {
 						className="navbar-toggler"
 						id="navbarNavDropdown"
 						type="button"
+						style={{ color: 'whitesmoke' }}
 						onClick={() => {
 							document.documentElement.classList.toggle('nav-open');
 							setBodyClick(true);
