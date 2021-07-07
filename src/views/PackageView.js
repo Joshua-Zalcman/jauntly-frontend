@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { Button } from 'reactstrap';
 
 const PackageView = ({ match, history, packages }) => {
 	const { addToCart } = useContext(GlobalContext);
@@ -91,7 +92,17 @@ const PackageView = ({ match, history, packages }) => {
 		}
 	};
 
-	return <section>{packageData ? loaded() : <p>Loading...</p>}</section>;
+	return (
+		<section>
+			<Button
+				className="my-2"
+				color="primary"
+				onClick={() => history.push('/packages')}>
+				Go Back
+			</Button>
+			{packageData ? loaded() : <p>Loading...</p>}
+		</section>
+	);
 };
 
 export default PackageView;

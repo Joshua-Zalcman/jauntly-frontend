@@ -46,9 +46,9 @@ const Header = () => {
 			) : null}
 			<Navbar color="warning" expand="lg">
 				<Container>
-					<NavbarBrand href="/" onClick={(e) => e.preventDefault()}>
-						Jauntly
-					</NavbarBrand>
+					<LinkContainer to="/">
+						<NavbarBrand>Jauntly</NavbarBrand>
+					</LinkContainer>
 					<button
 						className="navbar-toggler"
 						id="navbarNavDropdown"
