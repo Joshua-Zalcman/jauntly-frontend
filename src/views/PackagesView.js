@@ -12,7 +12,6 @@ import {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-	Nav,
 } from 'reactstrap';
 
 const PackagesView = ({ packages }) => {
