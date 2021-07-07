@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Link } from 'react-router-dom';
+import { FormGroup, Label, Input, Button, Col, Alert } from 'reactstrap';
 
 const RegisterUserView = ({ URL, history }) => {
 	const { checkForToken } = useContext(GlobalContext);
@@ -72,38 +73,60 @@ const RegisterUserView = ({ URL, history }) => {
 
 	return (
 		<div>
-			<h1>Register</h1>
-			{message && <p>{message}</p>}
+			<h1 className="mb-1">Register</h1>
+			{message && <Alert color="danger">{message}</Alert>}
 			<form onSubmit={handleSubmit}>
-				<input
-					type="text"
-					name="name"
-					placeholder="name"
-					value={newUser.name}
-					onChange={handleChange}
-				/>
-				<input
-					type="text"
-					name="email"
-					placeholder="email"
-					value={newUser.email}
-					onChange={handleChange}
-				/>
-				<input
-					type="text"
-					name="password"
-					placeholder="password"
-					value={newUser.password}
-					onChange={handleChange}
-				/>
-				<input
-					type="text"
-					name="confirmPassword"
-					placeholder="confirm password"
-					value={newUser.confirmPassword}
-					onChange={handleChange}
-				/>
-				<input type="submit" value="submit" />
+				<FormGroup row>
+					<Label md={2}>Name: </Label>
+					<Col md={10}>
+						<Input
+							type="text"
+							name="name"
+							placeholder="Enter name"
+							value={newUser.name}
+							onChange={handleChange}
+						/>
+					</Col>
+				</FormGroup>
+				<FormGroup row>
+					<Label md={2}>Email: </Label>
+					<Col md={10}>
+						<Input
+							type="text"
+							name="email"
+							placeholder="Enter email"
+							value={newUser.email}
+							onChange={handleChange}
+						/>
+					</Col>
+				</FormGroup>
+				<FormGroup row>
+					<Label md={2}>Password: </Label>
+					<Col md={10}>
+						<Input
+							type="text"
+							name="password"
+							placeholder="Enter new password"
+							value={newUser.password}
+							onChange={handleChange}
+						/>
+					</Col>
+				</FormGroup>
+				<FormGroup row>
+					<Label md={2}>Confirm Password: </Label>
+					<Col md={10}>
+						<Input
+							type="text"
+							name="confirmPassword"
+							placeholder="Confirm password"
+							value={newUser.confirmPassword}
+							onChange={handleChange}
+						/>
+					</Col>
+				</FormGroup>
+				<Button type="submit" color="primary" className="  my-2 ">
+					Submit
+				</Button>
 			</form>
 			<p>
 				Already registered? Login <Link to="/users/login">here!</Link>
