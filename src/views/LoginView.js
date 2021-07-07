@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const LoginView = ({ URL, history }) => {
@@ -43,16 +44,21 @@ const LoginView = ({ URL, history }) => {
 			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
+					placeholder="name"
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 				/>
 				<input
-					type="text"
+					type="password"
+					placeholder="password"
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 				<input type="submit" value="Login" />
 			</form>
+			<p>
+				New? Sign up <Link to="/users/register">here!</Link>
+			</p>
 		</section>
 	);
 };

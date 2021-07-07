@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { Link } from 'react-router-dom';
 
 const RegisterUserView = ({ URL, history }) => {
 	const { checkForToken } = useContext(GlobalContext);
@@ -104,6 +105,9 @@ const RegisterUserView = ({ URL, history }) => {
 				/>
 				<input type="submit" value="submit" />
 			</form>
+			<p>
+				Already registered? Login <Link to="/users/login">here!</Link>
+			</p>
 		</div>
 	);
 };
