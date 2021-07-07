@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import UsersView from './UsersView';
 import BookingsView from './BookingsView';
+import { Button, ButtonGroup } from 'reactstrap';
 
 const DashboardView = ({ URL }) => {
 	//state
@@ -15,16 +16,19 @@ const DashboardView = ({ URL }) => {
 
 	return (
 		<div>
-			<h1>Admin Dashboard</h1>
-			<div>
-				<button onClick={handleClick} disabled={viewItem}>
+			<h1 className="mb-2">Admin Dashboard</h1>
+			<ButtonGroup>
+				<Button onClick={handleClick} disabled={viewItem} className="btn-round">
 					Bookings
-				</button>
-				<button onClick={handleClick} disabled={!viewItem}>
+				</Button>
+				<Button
+					onClick={handleClick}
+					className="btn-round"
+					disabled={!viewItem}>
 					Users
-				</button>
-				{viewItem ? <BookingsView URL={URL} /> : <UsersView URL={URL} />}
-			</div>
+				</Button>
+			</ButtonGroup>
+			{viewItem ? <BookingsView URL={URL} /> : <UsersView URL={URL} />}
 		</div>
 	);
 };

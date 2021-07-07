@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import UserView from './UserView';
+import { ListGroup } from 'reactstrap';
 
 const UsersView = ({ URL, history }) => {
 	const [users, setUsers] = useState(null);
@@ -34,7 +35,7 @@ const UsersView = ({ URL, history }) => {
 	return (
 		<div>
 			<h1>Users</h1>
-			{users ? loaded() : <p>Loading...</p>}
+			{users ? <ListGroup>{loaded()}</ListGroup> : <p>Loading...</p>}
 		</div>
 	);
 };
