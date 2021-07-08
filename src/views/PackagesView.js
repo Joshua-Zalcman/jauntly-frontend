@@ -12,6 +12,7 @@ import {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
+	ButtonGroup,
 } from 'reactstrap';
 
 const PackagesView = ({ packages }) => {
@@ -48,14 +49,16 @@ const PackagesView = ({ packages }) => {
 
 	return (
 		<section>
-			<h1 className="text-center mb-4">Trip Packages</h1>
-			<div className="d-flex justify-content-center mb-4">
+			<h1 className="text-center mb-4 ">Trip Packages</h1>
+			<ButtonGroup className="my-3 mx-auto w-75 bg-secondary d-flex flex-wrap justify-content-around rounded">
 				<UncontrolledDropdown navbar>
 					<DropdownToggle
 						aria-haspopup={true}
 						caret
-						className="d-block"
-						color="primary"
+						style={{
+							backgroundColor: 'transparent',
+							borderColor: 'transparent',
+						}}
 						data-toggle="dropdown"
 						href="#pablo"
 						id="navbarDropdownMenuLink"
@@ -64,14 +67,23 @@ const PackagesView = ({ packages }) => {
 					</DropdownToggle>
 					<DropdownMenu
 						aria-labelledby="navbarDropdownMenuLink"
-						className="bg-light">
-						<DropdownItem id="Rio de Janeiro" onClick={handleClick}>
+						className="border border-dark">
+						<DropdownItem
+							id="Rio de Janeiro"
+							onClick={handleClick}
+							className="bg-primary ">
 							Rio de Janeiro
 						</DropdownItem>
-						<DropdownItem id="Sao Paulo" onClick={handleClick}>
+						<DropdownItem
+							id="Sao Paulo"
+							onClick={handleClick}
+							className="bg-primary ">
 							Sao Paulo
 						</DropdownItem>
-						<DropdownItem id="Manaus" onClick={handleClick}>
+						<DropdownItem
+							id="Manaus"
+							onClick={handleClick}
+							className="bg-primary">
 							Manaus
 						</DropdownItem>
 					</DropdownMenu>
@@ -80,28 +92,43 @@ const PackagesView = ({ packages }) => {
 					<DropdownToggle
 						aria-haspopup={true}
 						caret
-						color="default"
+						style={{
+							backgroundColor: 'transparent',
+							borderColor: 'transparent',
+						}}
 						data-toggle="dropdown"
 						href="#pablo"
 						id="navbarDropdownMenuLink"
 						onClick={(e) => e.preventDefault()}>
 						Peru
 					</DropdownToggle>
-					<DropdownMenu
-						aria-labelledby="navbarDropdownMenuLink"
-						className="bg-light">
-						<DropdownItem id="Rio de Janeiro" onClick={handleClick}>
-							Rio de Janeiro
-						</DropdownItem>
-						<DropdownItem id="Sao Paulo" onClick={handleClick}>
-							Sao Paulo
-						</DropdownItem>
-						<DropdownItem id="Manaus" onClick={handleClick}>
-							Manaus
+					<DropdownMenu aria-labelledby="navbarDropdownMenuLink">
+						<DropdownItem disabled className="bg-primary border border-dark">
+							Coming Soon!
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
-			</div>
+				<UncontrolledDropdown navbar>
+					<DropdownToggle
+						aria-haspopup={true}
+						caret
+						style={{
+							backgroundColor: 'transparent',
+							borderColor: 'transparent',
+						}}
+						data-toggle="dropdown"
+						href="#pablo"
+						id="navbarDropdownMenuLink"
+						onClick={(e) => e.preventDefault()}>
+						Ecuador
+					</DropdownToggle>
+					<DropdownMenu aria-labelledby="navbarDropdownMenuLink">
+						<DropdownItem disabled className="bg-primary border border-dark">
+							Coming Soon!
+						</DropdownItem>
+					</DropdownMenu>
+				</UncontrolledDropdown>
+			</ButtonGroup>
 
 			<div className="d-flex flex-wrap justify-content-around">
 				{packageList ? loaded() : <p>Loading...</p>}
