@@ -1,6 +1,20 @@
 import { useState, useEffect, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import { Button } from 'reactstrap';
+import {
+	Card,
+	CardImgOverlay,
+	CardTitle,
+	CardText,
+	CardImg,
+	Button,
+	CardBody,
+	FormGroup,
+	Row,
+	Col,
+	Label,
+	Input,
+	Alert,
+} from 'reactstrap';
 
 const PackageView = ({ match, history, packages }) => {
 	const { addToCart } = useContext(GlobalContext);
@@ -32,52 +46,75 @@ const PackageView = ({ match, history, packages }) => {
 
 	const loaded = () => {
 		return (
-			<div>
-				<h1>{packageData.pack.title}</h1>
-				<img
-					src={packageData.pack.image}
-					alt={packageData.pack.name}
-					style={{ width: '400px' }}
-				/>
-				<p>{packageData.pack.description}</p>
-				<p>${packageData.pack.price}</p>
-				{message && <p>{message}</p>}
-				<form onSubmit={handleSubmit}>
-					<label>
-						Number of travellers:
-						<select
-							name="guestNumber"
-							onChange={(e) =>
-								setPackageData({
-									...packageData,
-									[e.target.name]: e.target.value,
-								})
-							}>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-						</select>
-					</label>
-					<label>
-						Date:
-						<input
-							type="date"
-							value={packageData.date}
-							name="date"
-							onChange={(e) =>
-								setPackageData({
-									...packageData,
-									[e.target.name]: e.target.value,
-								})
-							}
-						/>
-					</label>
-					<input type="submit" value="Add to Cart" />
-				</form>
-			</div>
+			<Card className="bg-dark text-white">
+				<div className="bg-dark" style={{ opacity: '0.6' }}>
+					<CardImg
+						src={packageData.pack.image}
+						alt={packageData.pack.name}
+						style={{ backgroundColor: 'rgba(0,0,0,.8)' }}
+					/>
+				</div>
+				<div className=" p-3 position-absolute">
+					<h1 className="mt-0 mb-2">{packageData.pack.title}</h1>
+					<p>{packageData.pack.description}</p>
+					<h4 className="mt-0">Price per person: ${packageData.pack.price}</h4>
+				</div>
+
+				<CardBody>
+					{message && <Alert color="warning">{message}</Alert>}
+					<form onSubmit={handleSubmit}>
+						<Row className="align-items-center">
+							<Col>
+								<FormGroup>
+									<Label>
+										Travellers:
+										<Input
+											type="select"
+											name="guestNumber"
+											onChange={(e) =>
+												setPackageData({
+													...packageData,
+													[e.target.name]: e.target.value,
+												})
+											}>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+										</Input>
+									</Label>
+								</FormGroup>
+							</Col>
+							<Col>
+								<FormGroup>
+									<Label>
+										Date:
+										<Input
+											type="date"
+											value={packageData.date}
+											name="date"
+											onChange={(e) =>
+												setPackageData({
+													...packageData,
+													[e.target.name]: e.target.value,
+												})
+											}
+										/>
+									</Label>
+								</FormGroup>
+							</Col>{' '}
+						</Row>
+						<Button
+							className=" mt-3 d-block mb-0 w-100"
+							color="primary"
+							type="submit">
+							Add to Cart
+						</Button>
+					</form>
+				</CardBody>
+			</Card>
 		);
 	};
 
@@ -95,7 +132,7 @@ const PackageView = ({ match, history, packages }) => {
 	return (
 		<section>
 			<Button
-				className="my-2"
+				className="my-4"
 				color="primary"
 				onClick={() => history.push('/packages')}>
 				Go Back

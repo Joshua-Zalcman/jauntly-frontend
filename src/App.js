@@ -6,7 +6,7 @@ import { GlobalProvider } from './context/GlobalState';
 function App() {
 	return (
 		<GlobalProvider>
-			<div>
+			<div style={{ backgroundColor: 'whitesmoke', minHeight: '100vh' }}>
 				<Header />
 				<Main />
 			</div>
