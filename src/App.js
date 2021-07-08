@@ -8,6 +8,7 @@ function App() {
 		<GlobalProvider>
 			<div style={{ backgroundColor: 'whitesmoke', minHeight: '100vh' }}>
 				<Header />
+
 				<Main />
 			</div>
 		</GlobalProvider>
