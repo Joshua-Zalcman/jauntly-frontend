@@ -13,13 +13,13 @@ import {
 	NavItem,
 	NavLink,
 	Nav,
-	Button,
+	Badge,
 	Container,
 } from 'reactstrap';
 
 const Header = () => {
 	const history = useHistory();
-	const { userInfo, logoutUser, checkForToken, emptyCart } =
+	const { userInfo, cart, logoutUser, checkForToken, emptyCart } =
 		useContext(GlobalContext);
 	const [bodyClick, setBodyClick] = useState(false);
 
@@ -74,7 +74,9 @@ const Header = () => {
 							</NavItem>
 							<NavItem>
 								<LinkContainer to="/cart">
-									<NavLink>Cart</NavLink>
+									<NavLink>
+										Cart <Badge color="danger">{cart.length}</Badge>
+									</NavLink>
 								</LinkContainer>
 							</NavItem>
 							{!userInfo.name && (
