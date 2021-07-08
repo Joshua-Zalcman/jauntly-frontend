@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Jauntly
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An e-commerce travel package app dedicated to offering simple solutions to travellers who prefer to keep things simple and choose how to spend their time on vacation. Jauntly trip packages are designed to allow flexible and stress free trip planning that works with a travellers schedule.
 
-## Available Scripts
+Users can easily add packages to their cart, pick the date and number of guests before making a booking.
 
-In the project directory, you can run:
+The website also featurers Admin controls/dashboard to update bookings and user details.
 
-### `npm start`
+## Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- HTML
+- CSS
+- JavaScript
+- [Reactstrap](https://reactstrap.github.io/)
+- [Paper-kit Bootstrap Library by Creative-Tim](https://www.creative-tim.com/)
+- [React](https://reactjs.org/)
+- [React-Router](https://reactrouter.com/)
+- [React-Router-Bootstrap](https://www.npmjs.com/package/react-router-bootstrap)
+- MongoDB
+- Node.js
+- Express
+- [JSON Web Tokens](https://jwt.io/)
+- [Bcrypt](https://www.npmjs.com/package/bcrypt)
+- [Travel images from Unsplash.com](https://unsplash.com/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
+### Wireframes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![wireframe](frontend/public/img/wireframe.png)
 
-### `npm run build`
+### ERD
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![ERD](frontend/public/img/erd.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Images of App
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Pet Board](frontend/public/img/pet-board-img.png)
 
-### `npm run eject`
+![User Screen](frontend/public/img/user-screen-img.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Getting Started
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Click [here](https://pet-foster-board.herokuapp.com/) to visit working App
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Future Enhancements
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Search functionality
+- More user options such as pay features (strip/paypal sandbox)
+- Adding more styling
+- Utilize local storage to persist cart information on page refresh
