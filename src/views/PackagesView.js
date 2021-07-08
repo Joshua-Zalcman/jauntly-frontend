@@ -28,12 +28,17 @@ const PackagesView = ({ packages }) => {
 		return packageList.map((pack) => (
 			<Card key={pack._id} style={{ width: '20rem' }}>
 				<Link to={`/packages/${pack._id}`}>
-					<CardImg top src={pack.image} alt={pack.name} />
+					<CardImg
+						top
+						src={pack.image}
+						alt={pack.name}
+						style={{ objectFit: 'cover', height: '240px' }}
+					/>
 				</Link>
 				<CardBody>
-					<CardTitle>
+					<h5>
 						{pack.title} - ${pack.price}
-					</CardTitle>
+					</h5>
 					<CardText>{pack.description}</CardText>
 					<LinkContainer to={`/packages/${pack._id}`}>
 						<Button color="primary">Book</Button>
