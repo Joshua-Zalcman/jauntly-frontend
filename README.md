@@ -27,17 +27,23 @@ The website also featurers Admin controls/dashboard to update bookings and user 
 
 ### Wireframes
 
-![wireframe](frontend/public/img/wireframe.png)
+![wireframe](public/img/wireframe.png)
 
 ### ERD
 
-![ERD](frontend/public/img/erd.png)
+![ERD](public/img/erd.png)
 
 ### Images of App
 
-![Pet Board](frontend/public/img/pet-board-img.png)
+![Packages Screen](public/img/packages-screen.png)
 
-![User Screen](frontend/public/img/user-screen-img.png)
+![Package Screen](public/img/package-screen.png)
+
+![Cart Screen](public/img/cart-screen.png)
+
+![Booking Screen](public/img/booking-screen.png)
+
+![Admin Dashboard](public/img/admin-dashboard.png)
 
 ## Getting Started
 
