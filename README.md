@@ -47,7 +47,7 @@ The website also featurers Admin controls/dashboard to update bookings and user 
 
 ## Getting Started
 
-Click [here](https://pet-foster-board.herokuapp.com/) to visit working App
+Click [here](https://jauntly-frontend.herokuapp.com/) to visit working App
 
 ## Future Enhancements
 
